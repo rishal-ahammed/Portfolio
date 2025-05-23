@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Color Change on Scroll</title>
+
+    <style>
+        /* Basic CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 200vh;
+            overflow: auto;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+        }
+
+        /* First Section */
+        .div1 {
+            position: relative;
+            background: url("https://via.placeholder.com/1920x1080") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: background-color 0.2s ease;
+        }
+
+        .div2 {
+            background-color: #2c3e50;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Header box */
+        .header-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 50px;
+            font-size: 20px;
+            background-color: transparent;
+            /* Initially transparent */
+            transition: background-color 0.2s ease;
+            /* Smooth transition for color change */
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- First Section -->
+    <div class="div1">
+        <div class="header-box">
+            <p>Scroll to Change Background Color</p>
+        </div>
+    </div>
+
+    <!-- Second Section -->
+    <div class="div2">
+        <p>Second Section</p>
+    </div>
+
+    <script>
+        console.log('Script is running');
+
+        // Attach scroll event listener
+        document.addEventListener('scroll', function () {
+            console.log('Scroll detected!');
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+            console.log('Current Scroll Position:', scrollY);
+
+            const header = document.querySelector('.header-box');
+            if (scrollY > 50) {
+                header.style.backgroundColor = 'red';
+            } else {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

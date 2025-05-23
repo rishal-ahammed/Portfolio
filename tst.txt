@@ -1,0 +1,587 @@
+/*======================
+  Root Variables
+========================*/
+:root {
+  --main-font: "Roboto", sans-serif;
+  --heading-font: "Lora", serif;
+  --font3: "Yatra One", system-ui;
+  --font4: "Radon Bold", Radon;
+}
+
+/*======================
+  CSS Reset
+========================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 200vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar in WebKit-based browsers */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/*======================
+  Section Layouts
+========================*/
+.div1 {
+  position: relative;
+  background: url("img/background.jpg") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.div2 {
+  background-color: rgb(34, 36, 2);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*======================
+  Header Styling
+========================*/
+.header-box {
+  font-family: var(--main-font);
+  position: fixed;
+  z-index: 1001;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  width: 85%;
+  height: 65px;
+  padding: 5px 90px 5px 50px;
+  border: 0.1px solid rgba(255, 255, 255, 0.266);
+  border-radius: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: white;
+  letter-spacing: 3px;
+  transition: background-color 0.1s linear;
+}
+
+.header-box.scrolled {
+  background-color: rgba(255, 0, 0, 0.9);
+}
+
+h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+/*======================
+  Header - Left Menu
+========================*/
+.leading {
+  text-align: left;
+  list-style-type: disc;
+  letter-spacing: 3px;
+}
+
+.leading li {
+  font-size: 13px;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.leading li::marker {
+  font-size: 15px;
+}
+
+.leading a {
+  color: white;
+  text-decoration: none;
+}
+
+/*======================
+  Header - Right Menu
+========================*/
+.trailing {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 13px;
+  text-align: right;
+  letter-spacing: 3px;
+}
+
+/* Hamburger Icon */
+.container {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 30px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.893);
+  margin: 8px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 9px) rotate(-45deg);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+/* Vertical Line Separator */
+.separator {
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.367);
+  height: auto;
+  margin: 0;
+  align-self: stretch;
+}
+
+/* Horizontal Line */
+.bar4 {
+  width: 35px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.234);
+  margin-left: 30px;
+}
+
+/*======================
+  Bottom Text Section
+========================*/
+.bottom-text-container {
+  font-family: var(--main-font);
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.bottom-bullet {
+  font-size: 30px;
+  margin: 0 35px;
+}
+
+.bottom-text-left,
+.bottom-text-right {
+  position: relative;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-color: rgba(255, 255, 255, 0.259);
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bottom-text-left::after,
+.bottom-text-right::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.7s ease, right 0.7s ease;
+}
+
+.bottom-text-left:hover::after,
+.bottom-text-right:hover::after {
+  width: 100%;
+  right: auto;
+  left: 0;
+}
+
+/*======================
+  Heading Sections
+========================*/
+.heading-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  font-family: var(--font3);
+  font-size: 5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: white;
+  white-space: nowrap;
+  animation: move-heading-left 60s linear infinite;
+}
+
+.heading-second-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.heading-second-track {
+  display: flex;
+  animation: continuous-scroll 20s linear infinite;
+  will-change: transform;
+}
+
+.heading-second {
+  font-family: var(--font3);
+  font-size: 5rem;
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0 50px;
+}
+
+/*======================
+  Animations
+========================*/
+@keyframes move-heading-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes continuous-scroll {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/*======================
+  Quarter Circle Design
+========================*/
+.quarter-circle-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.quarter-circle {
+  width: 300px;
+  height: 300px;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  border: 0.1px solid rgba(255, 255, 255, 0.266);
+  box-sizing: border-box;
+  transition: transform 0.9s ease, border-color 0.3s ease;
+}
+
+.quarter-circle:hover {
+  transform: scale(1.1);
+  border-width: 1px;
+  border-color: white;
+}
+
+.arrow-down {
+  position: absolute;
+  bottom: 180px;
+  left: 90px;
+  font-size: 35px;
+  color: rgba(255, 255, 255, 0.378);
+  font-weight: lighter;
+  z-index: 1001;
+  transform: rotate(-45deg);
+  transition: transform 0.5s ease, color 0.5s ease, font-weight 0.5s ease;
+}
+
+.quarter-circle:hover .arrow-down {
+  color: rgba(255, 255, 255, 0.752);
+  transform: rotate(0deg);
+  font-weight: 300;
+}
+
+/* Fullscreen overlay menu */
+.fullscreen-menu {
+  position: fixed;
+  z-index: 999;
+  top: -100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0a0a; /* Dark background */
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: top 0.8s ease-in-out;
+  opacity: 0.95;
+}
+/* Horizontal scroll wrapper */
+.overlay-scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Menu item styles */
+.overlay-menu-items {
+  display: flex;
+  gap: 80px; /* Reduced spacing between items */
+  min-width: max-content; /* Ensures full width of all li's is respected */
+  padding: 0 10vw; /* Optional: adds left/right space */
+  will-change: transform;
+  transition: transform 0.2s ease-out; /* Smooth transition */
+}
+
+.overlay-menu-items li {
+  margin: 0 50px;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+.overlay-menu-items li a {
+  font-size: 6rem;
+  font-family: var(--font4);
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* The vertical fill effect */
+.overlay-menu-items li a::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  z-index: -1;
+  pointer-events: none;
+
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  transition: clip-path 1s ease-in-out;
+}
+
+.overlay-menu-items li a:hover::before {
+  clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+  transition-duration: 1s; /* keep same duration */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* no delay, so starts immediately */
+}
+
+
+
+
+.menu-items a:hover {
+  color: #f44336; /* Optional: hover color */
+}
+
+/* Show menu when toggled */
+.fullscreen-menu.show {
+  top: 0;
+}
+
+/*======================
+  Responsive Design (Optional)
+========================*/
+
+/*======================
+  Responsive Design
+========================*/
+
+/* Medium devices (tablets, 768px and down) */
+/*======================
+  Responsive Design
+========================*/
+
+/* For Tablets and Below (max width: 768px) */
+@media (max-width: 768px) {
+  .header-box {
+    width: 95%;
+    padding: 5px 20px;
+    font-size: 10px;
+    height: 55px;
+  }
+
+  .leading li,
+  .trailing {
+    font-size: 11px;
+  }
+
+  .container {
+    margin-left: 15px;
+  }
+
+  .bar1,
+  .bar2,
+  .bar3 {
+    width: 25px;
+    margin: 6px 0;
+  }
+
+  .bar4 {
+    width: 25px;
+    margin-left: 15px;
+  }
+
+  .heading,
+  .heading-second {
+    font-size: 3rem;
+  }
+
+  .overlay-menu-items li a {
+    font-size: 4rem;
+  }
+
+  .bottom-text-container {
+    font-size: 12px;
+  }
+
+  .bottom-bullet {
+    font-size: 25px;
+    margin: 0 20px;
+  }
+
+  .arrow-down {
+    font-size: 25px;
+    left: 60px;
+    bottom: 140px;
+  }
+
+  .quarter-circle-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  .quarter-circle {
+    width: 250px;
+    height: 250px;
+    bottom: -125px;
+    right: -125px;
+  }
+}
+
+/* For Mobile Phones (max width: 480px) */
+@media (max-width: 480px) {
+  .header-box {
+    width: 95%;
+    padding: 5px 15px;
+    height: 50px;
+    font-size: 9px;
+  }
+
+  .leading,
+  .trailing {
+    display: none; /* Hide header menu links on mobile */
+  }
+
+  .container {
+    display: block;
+    margin-left: auto;
+  }
+
+  .heading,
+  .heading-second {
+    font-size: 2.2rem;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .overlay-menu-items {
+    gap: 40px;
+    padding: 0 5vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .overlay-menu-items li a {
+    font-size: 2.5rem;
+  }
+
+  .bottom-text-container {
+    flex-direction: column;
+    font-size: 10px;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .bottom-bullet {
+    display: none;
+  }
+
+  .arrow-down {
+    font-size: 20px;
+    left: 45px;
+    bottom: 110px;
+  }
+
+  .quarter-circle-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .quarter-circle {
+    width: 150px;
+    height: 150px;
+    bottom: -75px;
+    right: -75px;
+  }
+
+  .fullscreen-menu {
+    padding: 20px;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  .overlay-scroll-wrapper {
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+}
+
+
+
